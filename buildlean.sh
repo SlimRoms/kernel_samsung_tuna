@@ -1,11 +1,11 @@
 #!/bin/bash
 
-[[ `diff arch/arm/configs/tuna_defconfig .config ` ]] && \
-	{ echo "Unmatched defconfig!"; exit -1; } 
+#[[ `diff arch/arm/configs/tuna_defconfig .config ` ]] && \
+#	{ echo "Unmatched defconfig!"; exit -1; } 
 
 sed -i s/CONFIG_LOCALVERSION=\".*\"/CONFIG_LOCALVERSION=\"-leanKernel-${1}\"/ .config
 
-make ARCH=arm CROSS_COMPILE=/data/linaro/android-toolchain-eabi/bin/arm-linux-androideabi- -j2
+#make ARCH=arm CROSS_COMPILE=/data/linaro/android-toolchain-eabi/bin/arm-linux-androideabi- -j2
 
 cp arch/arm/boot/zImage mkboot/
 #sed -i s/CONFIG_LOCALVERSION=\".*\"/CONFIG_LOCALVERSION=\"\"/ .config

@@ -1,11 +1,13 @@
 #!/bin/bash
 
+#make mrproper
+
 #[[ `diff arch/arm/configs/tuna_defconfig .config ` ]] && \
 #	{ echo "Unmatched defconfig!"; exit -1; } 
 
 sed -i s/CONFIG_LOCALVERSION=\".*\"/CONFIG_LOCALVERSION=\"-leanKernel-${1}\"/ .config
 
-#make ARCH=arm CROSS_COMPILE=/data/linaro/android-toolchain-eabi/bin/arm-linux-androideabi- -j2
+#make ARCH=arm CROSS_COMPILE=/home/ar/android/aosp_jb/prebuilt/linux-x86/toolchain/gcc-linaro-12.05/bin/arm-linux-gnueabihf- -j4
 
 cp arch/arm/boot/zImage mkboot/
 #sed -i s/CONFIG_LOCALVERSION=\".*\"/CONFIG_LOCALVERSION=\"\"/ .config
